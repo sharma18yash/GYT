@@ -1,0 +1,19 @@
+*.pyc
+*.egg-info
+.idea/*
+.vscode/*
+*.swp
+*.xml
+*.iml
+*.DS_Store
+dist
+build/
+venv/
+.env
+
+# Ignore generated outputs
+.outputs/*
+
+*.deb
+tests/ignore_*.py
+temp/

@@ -1,0 +1,74 @@
+version: "3"
+
+env:
+  python_version: "3.9"
+  env_name: venv_mircoinvest
+  python_path:
+    sh: echo pwd/src
+
+dotenv: [".env"]
+
+tasks:
+  vscode:
+    cmds:
+      - code .
+    silent: true
+    env:
+      ENVIRONMENT: local
+
+  vscode:test:
+    cmds:
+      - code .
+    silent: true
+    env:
+      ENVIRONMENT: test
+
+  show:env:
+    cmds:
+      - echo "Python virtual environment = $env_name"
+      - echo "Environment = $ENVIRONMENT"
+    silent: true
+
+  clean:
+    cmds:
+      - find . -type f -name "*.pyc" -delete
+      - find . -type d -name "_pycache_" -delete
+      - find . -depth -type d -name "*.egg-info" -exec rm -r '{}' \;
+
+  install:python:
+    cmds:
+      - pyenv install $python_version
+      - pyenv global $python_version # Use this version globally
+
+  install:env:
+    cmds:
+      - pyenv virtualenv $python_version $env_name
+      - pyenv virtualenvs
+      - pyenv activate $env_name
+
+  install:tools:
+    cmds:
+      - pip install --upgrade pip
+      - pip install --upgrade pip-tools
+
+  compile:pkg:
+    deps: [install:tools]
+    cmds:
+      - rm -f requirements.txt
+      - pip-compile pyproject.toml --resolver=backtracking -o requirements.txt -v
+
+  install:pkg:
+    deps: [install:tools]
+    cmds:
+      - pip install -r requirements.txt
+
+  format:run:
+    cmds:
+      - isort --profile black .
+      - black .
+
+  run:local:
+    cmds:
+      - python run.py
+    env:
+      ENVIRONMENT: local
