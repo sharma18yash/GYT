@@ -48,8 +48,8 @@ tasks:
 
   install:tools:
     cmds:
-      - pip install --upgrade pip
-      - pip install --upgrade pip-tools
+      - pip install --upgrade pip -v
+      - pip install --upgrade pip-tools -v
 
   compile:pkg:
     deps: [install:tools]
@@ -60,7 +60,7 @@ tasks:
   install:pkg:
     deps: [install:tools]
     cmds:
-      - pip install -r requirements.txt
+      - pip install -r requirements.txt -v
 
   format:run:
     cmds:
@@ -69,6 +69,6 @@ tasks:
 
   run:local:
     cmds:
-      - python run.py
+      - python src/app/app.py
     env:
       ENVIRONMENT: local
