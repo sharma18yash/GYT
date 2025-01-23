@@ -8,10 +8,14 @@ annotated-types==0.7.0
     # via pydantic
 anyio==4.8.0
     # via starlette
+click==8.1.8
+    # via uvicorn
 exceptiongroup==1.2.2
     # via anyio
 fastapi==0.115.7
     # via micro-investing-app (pyproject.toml)
+h11==0.14.0
+    # via uvicorn
 idna==3.10
     # via anyio
 pydantic==2.10.5
@@ -29,3 +33,6 @@ typing-extensions==4.12.2
     #   pydantic
     #   pydantic-core
     #   starlette
+    #   uvicorn
+uvicorn==0.34.0
+    # via micro-investing-app (pyproject.toml)

@@ -72,3 +72,9 @@ tasks:
       - python src/app/app.py
     env:
       ENVIRONMENT: local
+
+  run:node:
+    cmds:
+      - python3 -m venv venv_mircoinvest
+      - source venv_mircoinvest/bin/activate
+      - pip install -r requirements.txt
