@@ -1,8 +1,18 @@
 # GYT
 
-Tasks :
+# Setting up Azure VM with HTTPs endpoint : 
 
-- Create a flask server with required two endpoints : postback and callback
-- Update code on the node and make these endpoints live
-- Create the Kite app using this
-- Start dev!!
+sudo apt update
+sudo apt install nginx
+
+sudo nano /etc/nginx/sites-available/gyptay.conf
+sudo ln -s /etc/nginx/sites-available/gytpay.conf 
+cd /etc/nginx/sites-enabled/
+vim /etc/systemd/system/uvicorn.service
+
+
+sudo nginx -s reload
+sudo systemctl restart nginx
+
+sudo nginx -t
+sudo systemctl reload nginx

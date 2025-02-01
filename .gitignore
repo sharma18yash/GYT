@@ -8,7 +8,6 @@
 *.DS_Store
 dist
 build/
-venv/
 .env
 *.pem
 # Ignore generated outputs
