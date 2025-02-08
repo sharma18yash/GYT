@@ -12,7 +12,7 @@ build/
 *.pem
 # Ignore generated outputs
 .outputs/*
-
+backend/gyt_venv/
 *.deb
 tests/ignore_*.py
 temp/
