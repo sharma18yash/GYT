@@ -1,7 +1,7 @@
 
 export default function LandingPage() {
     const handleLogin = () => {
-        window.location.href = 'https://gytpay.in/zerodha-kite/login';
+        window.location.href = 'https://gyt.fly.dev/zerodha-kite/login';
     }
 
     return (
