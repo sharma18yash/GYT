@@ -26,7 +26,7 @@ async def callback(request: Request):
             # Set the access_token for further API calls
             kite.set_access_token(access_token)
 
-            redirect_url = f"https://gyt.fly.dev/"
+            redirect_url = f"https://gyt-silk.vercel.app/home"
             return RedirectResponse(redirect_url)
         except Exception as e:
             return {"error": str(e)}
