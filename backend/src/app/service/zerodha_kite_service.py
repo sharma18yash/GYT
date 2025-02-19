@@ -4,7 +4,7 @@ from fastapi.params import Body
 from kiteconnect import KiteConnect
 from fastapi.responses import RedirectResponse
 
-from app.models.execute_trade_request_body import ExecuteTradeRequestBody
+from models.execute_trade_request_body import ExecuteTradeRequestBody
 
 
 api_key = "fwy2sz5ujjjctqxb"
