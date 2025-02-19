@@ -1,7 +1,10 @@
 import logging
 from fastapi import APIRouter, Request
+from fastapi.params import Body
 from kiteconnect import KiteConnect
 from fastapi.responses import RedirectResponse
+
+from app.models.execute_trade_request_body import ExecuteTradeRequestBody
 
 
 api_key = "fwy2sz5ujjjctqxb"
@@ -39,6 +42,7 @@ async def postback():
 
 @router.get("/health")
 async def health_check():
+    logging.info("Health check")
     return {"status": "ok"}
 
 @router.get("/login")
@@ -46,3 +50,20 @@ async def login():
     login_url = kite.login_url()  # Get the login URL
     return RedirectResponse(login_url)  # Redirect the user to Zerodha's login page
 
+@router.post("/trade/execute")
+async def execute_trade(
+    request_body: ExecuteTradeRequestBody = Body(...),
+):
+    try:
+        order_id = kite.place_order(
+            tradingsymbol=request_body.trading_symbol,
+            exchange=kite.EXCHANGE_NSE,
+            transaction_type=kite.TRANSACTION_TYPE_BUY,
+            quantity=request_body.quantity,
+            order_type=kite.ORDER_TYPE_MARKET,
+            product=kite.PRODUCT_CNC,
+            validity=kite.VALIDITY_DAY,
+        )
+        return {"order_id": order_id}
+    except Exception as e:
+        return {"error": str(e)}
