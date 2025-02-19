@@ -26,7 +26,8 @@ async def callback(request: Request):
             # Set the access_token for further API calls
             kite.set_access_token(access_token)
 
-            return {"message": "Login successful!", "access_token": access_token}
+            redirect_url = f"https://gyt.fly.dev/"
+            return RedirectResponse(redirect_url)
         except Exception as e:
             return {"error": str(e)}
     else:
