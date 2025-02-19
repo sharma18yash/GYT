@@ -16,3 +16,4 @@ backend/gyt_venv/
 *.deb
 tests/ignore_*.py
 temp/
+backend/venv_mircoinvest
