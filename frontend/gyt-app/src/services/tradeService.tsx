@@ -1,5 +1,5 @@
 interface ExecuteTradeRequestBody {
-    tradingsymbol: string;
+    tradingSymbol: string;
     quantity: number;
   }
   
